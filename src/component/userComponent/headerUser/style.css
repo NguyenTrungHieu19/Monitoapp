@@ -1,0 +1,150 @@
+:root{
+    --content-text-color: #003459;
+    --input-color:#FDFDFD;
+    --input-text-color:#99A2A5;
+    --header-title:#002A48;
+    --header-text:#242B33;
+}
+.header {
+    width: 100%;
+    height: 695px;
+    /* background-image: url(/img/Herro\ Banner.png); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0px 0px 40px 40px;
+    /* background-position: no-repeat; */
+    
+}
+.header-waper{
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+.header_menu {
+    width: 42%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    column-gap: 48px;
+    padding: 30px 0 30px 130px;
+}
+
+.menu--text {
+    display: flex;
+    column-gap: 48px;
+    list-style: none;
+    padding: 8px 0;
+}
+
+.menu--text a {
+    text-decoration: none;
+    color: var(--content-text-color);
+    font-family:'SVN-Gilroy';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+.header_action {
+    width: 58%;
+    height: max-content;
+    display: flex;
+    column-gap: 14px;
+    align-items: center;
+}
+.search-btn{
+    background: none;
+    outline: none;
+    border: none;
+    position: relative;
+    top: 3px;
+    right: -40px;
+    line-height: 20px;
+    color: var(--input-text-color);
+}
+.header--input input {
+    font-family:'SVN-Gilroy';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 12px 79px 12px 48px;
+    color: var(--input-text-color);
+    background-color: var(--input-color);
+    border-radius: 46px;
+    border: none;
+    outline: none;
+}
+.header--button button{
+    border: none;
+    background-color: var(--content-text-color);
+    font-family:'SVN-Gilroy';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--input-color);
+    padding: 12px  28px 8px 28px;
+    border-radius: 57px;
+    cursor: pointer;
+}
+.header_content{
+    width: 50%;
+    margin: 80px 0 0 130px;
+}
+.header-content-text h1{
+    color: var(--header-title);
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 68px;
+    padding-bottom: 4px;
+}
+.header-content-text h2{
+    color: var(--header-title);
+    font-family:'SVN-Gilroy';
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 60px;
+    padding-bottom: 24px;
+}
+.header-content-text{
+    width:480px;
+    font-family:'SVN-Gilroy';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--header-text);
+    padding-bottom: 34px;
+}
+.header-content-action{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+.btn--viewtro{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 28px 10px;
+    gap: 8px;
+    border: none;
+    background: none;
+    border: 1.5px solid #003459;
+    border-radius: 57px;
+    font-family:'SVN-Gilroy';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--content-text-color);
+    cursor: pointer;
+}
+.btn--explor{
+    font-family:'SVN-Gilroy';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--input-color);
+    padding: 14px 35.5px 10px 35.5px;
+    background: #003459;
+    border-radius: 57px;
+    border: none;
+    cursor: pointer;
+}

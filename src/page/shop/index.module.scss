@@ -1,0 +1,12 @@
+.headerContent{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+  .headerButton{
+    display: flex;
+    column-gap: 10px;
+  }
+  .buttonEdit{
+    background-color: rgb(236, 151, 4);
+  }

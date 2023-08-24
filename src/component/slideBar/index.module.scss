@@ -1,0 +1,30 @@
+.HeaderSideBar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+.headerBar{
+    background-color: rgb(239, 99, 134) !important;
+    z-index: 1 !important;
+}
+.sidleBarMenu{
+    z-index: 0 !important;
+  }
+.logo{
+    margin: auto;
+}
+.IconNotification{
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 20px;
+    padding-right: 30px;
+    width: 50%;
+}
+.NotificationModel{
+    position: fixed;
+    z-index: 111111111 !important;
+}
+.css-1191obr-MuiPaper-root-MuiAppBar-root{
+    background-color: antiquewhite !important;
+}

@@ -1,0 +1,128 @@
+:root{
+    --content-text-color: #003459;
+    --input-color:#FDFDFD;
+    --input-text-color:#99A2A5;
+    --header-title:#002A48;
+    --header-text:#242B33;
+}
+.container-footer{
+    border-radius: 40px 40px 0px 0px;
+    background: linear-gradient(134deg, #FCEED5 6.17%, #FCEED5 75.14%, #FFE7BA 100%);
+    position: relative;
+    height: 440px;;
+    margin-top: 60px;
+}
+.navbar-footer{
+    width: 83%;
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+    padding: 32px;
+    margin: 0 130px ;
+    align-items: flex-start;
+    gap: 20px;
+    border-radius: 16px;
+    position: absolute;
+    top:80px;
+    background: var(--primary-color-dark-blue, #003459);
+}
+.navbar-footer-tab{
+    display: flex;
+    justify-content: space-between;
+    width: 83%;
+    position: absolute;
+    top:280px;
+    margin: 0 130px;
+}
+.navbar-footer-socialnetwork  {
+    display: flex; 
+    column-gap: 40px;
+    font-size: 24px;
+   
+}
+.navbar-footer-socialnetwork a{
+    color: var(--neutral-color-100, #00171F);
+}
+.navbar-footer-menu ul{
+    display: flex;
+    column-gap: 60px;
+    list-style: none;  
+}
+.navbar-footer-menu a{
+    text-decoration: none;
+    color: var(--neutral-color-100, #00171F);
+    font-size: 16px;
+    font-family: SVN-Gilroy;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    }
+.navbar-footer-text-left{
+    display: flex;
+    width: 389px;
+    flex-direction: column;
+    color: var(--neutral-color-00, #FDFDFD);
+    font-size: 24px;
+    font-family: SVN-Gilroy;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+}
+.navbar-footer-input-right{
+    display: flex;
+    width: 707px;
+    padding: 12px;
+    align-items: center;
+    gap: 12px;
+    border-radius: 14px;
+    background: #FFF;   
+}
+.navbar-footer-input-right input{
+    display: flex;
+    padding: 14px 28px;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    border-radius: 8px;
+    border: 1px solid var(--neutral-color-40, #99A2A5);
+    background: #FFF;
+    border: none;
+}
+.navbar-footer-input-right button{
+    display: flex;
+    width: 163px;
+    padding: 14px 28px 10px 28px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: none;
+    background: var(--primary-color-dark-blue, #003459);
+    color: var(--neutral-color-00, #FDFDFD);
+    font-size: 16px;
+    font-family: SVN-Gilroy;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+.footer{
+    display: flex;
+    column-gap: 380px;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    margin: 0 130px;
+}
+.footer-right{
+    display: flex;
+}
+.footer-right,.footer-Copyright p{
+    color: var(--neutral-color-60, #667479);
+    font-size: 14px;
+    font-family: SVN-Gilroy;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
