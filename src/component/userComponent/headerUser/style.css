@@ -5,16 +5,6 @@
     --header-title:#002A48;
     --header-text:#242B33;
 }
-.header {
-    width: 100%;
-    height: 695px;
-    /* background-image: url(/img/Herro\ Banner.png); */
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 0px 0px 40px 40px;
-    /* background-position: no-repeat; */
-    
-}
 .header-waper{
     display: flex;
     align-items: center;

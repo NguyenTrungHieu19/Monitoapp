@@ -52,7 +52,6 @@ const validationSchema = yup.object({
 const ModalCreateShop = () => {
     const { openCreateShop, setOpenCreateShop, fetchListShop } = useContext(ShopModalContext);
     const [open, setOpen] = useState(false);
-    // const [ischeck, setIsCheck] = useState(false);
     const handleClose = () => {
         setOpenCreateShop(false);
     };
@@ -65,11 +64,6 @@ const ModalCreateShop = () => {
         }, 2000);
 
     }
-    // const handelCheck = yup.object().shape=>{
-
-    //     setIsCheck(!ischeck);
-    // }
-
     const formik = useFormik({
         initialValues: {
             address: "",
@@ -84,7 +78,6 @@ const ModalCreateShop = () => {
         },
         validationSchema: validationSchema,
         onSubmit: async (values) => {
-            console.log(values);
             await handleCreateShop({
                 address: values.address,
                 name: values.name,
@@ -106,7 +99,7 @@ const ModalCreateShop = () => {
             await ShopApi.Create({ address, name, phone, hotline, faceBook, email, zalo, logo, status });
         }
         catch (error) {
-            console.log(error)
+          
         }
     }
     return (
@@ -237,11 +230,10 @@ const ModalCreateShop = () => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleCloseLoading} variant="contained" type="submit">Save</Button>
+                        <Button onClick={handleCloseLoading}variant="contained" type="submit">Save</Button>
                     </DialogActions>
                 </form>
             </Dialog>
-
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}

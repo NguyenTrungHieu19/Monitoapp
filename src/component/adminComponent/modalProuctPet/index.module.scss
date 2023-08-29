@@ -1,0 +1,29 @@
+.inputModal{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+}
+.inputRight{
+    .input{
+        min-width: 350px !important;
+    }
+    width: 50% !important;
+}
+.inputLeft{
+    input{
+        min-width: 350px !important;
+    }
+    width: 50% !important;
+}
+:global{
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  {
+   min-width:800px !important;
+}
+.MuiInputBase-input{
+    padding: 5px 5px !important;
+}
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+    min-width: 100% !important;
+}
+}

@@ -6,6 +6,7 @@
     row-gap: 28px;
     margin: auto;
     justify-content: center;
+   
 }
 .container-product{
     width: 21%;
@@ -18,11 +19,6 @@
     justify-content: center;
     padding-top: 18px;
     margin:auto;
-}
-
-.product-img img:hover{ 
-   padding-top: 0;
-   transition-duration: 0.2s
 }
 .product-title{
     display: flex;

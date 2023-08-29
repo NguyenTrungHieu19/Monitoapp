@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import './style.css'
 import MenuApis from '../../../api/menuApi';
+import { useNavigate } from 'react-router';
 const HeaderUser = () => {
     const [listMenu, setListMenu] = useState([]);
     const fetchListMenu = async (config={})=>{
        try{
             const response = await MenuApis.GetAll(config)
             setListMenu(response.data)
-            console.log(listMenu)
        }
        catch(err){
         console.log(err)
@@ -15,11 +15,11 @@ const HeaderUser = () => {
     }
     useEffect(()=>{
         fetchListMenu();
-    },[])
-   
+    },[]);
+    const navigate = useNavigate();
     return (
         <>
-            <div class="header">
+           
                 <div class="header-waper">
                     <div class="header_menu">
                         <div class="header--img">
@@ -28,8 +28,7 @@ const HeaderUser = () => {
                         {listMenu.map(item=>
                             
                         <ul class="menu--text" >
-                         <li key={item.id}>{item.name}</li>
-                          
+                           <li  onClick={()=> navigate(item.alias)} >{item.name}  </li>    
                         </ul>
                         )}
                     </div>
@@ -46,25 +45,8 @@ const HeaderUser = () => {
                         </div>
                     </div>
                 </div>
-                <div class="header_content">
-                    <div class="header-content-text">
-                        <h1>One more friend</h1>
-                        <h2>Thousands more fun!</h2>
-                        <p>Having a pet means you have more joy, a new friend, a happy person who will always be with you to
-                            have
-                            fun. We have 200+ different pets that can meet your needs!
-                        </p>
-                    </div>
-                    <div class="header-content-action">
-                        <button class="btn--viewtro">
-                            View Intro
-                            <i class="fa-regular fa-circle-play"></i>
-                        </button>
-                        <button class="btn--explor">Explore Now</button>
-                    </div>
-
-                </div>
-            </div>
+            
+           
         </>
     )
 }

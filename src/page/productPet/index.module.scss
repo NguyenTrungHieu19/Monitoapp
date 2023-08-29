@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
+    align-items: center;
+    position: sticky;
   }
   .headerButton{
     display: flex;
@@ -9,4 +11,12 @@
   }
   .buttonEdit{
     background-color: rgb(236, 151, 4);
+  }
+  :global {
+    .ant-input-group {
+      width: 350px;
+    }
+    .ant-table-cell-fix-left-last{
+      z-index: 1 !important;
+    }
   }

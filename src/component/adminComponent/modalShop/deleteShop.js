@@ -23,6 +23,7 @@ const ModalDeleteShop = () => {
     return (
         <>
             <Modal
+                
                 title="Delete Shop"
                 open={openDeleteShop}
                 onOk={handleOk}

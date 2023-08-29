@@ -1,26 +1,41 @@
+import { useEffect, useState } from 'react';
 import '../productPetUser/style.css'
+import ProductPetApis from '../../../../api/productPetApi';
 const ProductPetUser = () => {
+    const [listProductPet, setLisProducttPet] = useState([]);
+    const fetchProductPet = async (config = {}) => {
+        const response = await ProductPetApis.GetAll(config)
+        setLisProducttPet(response.data)
+    }
+    useEffect(() => {
+        fetchProductPet();
+    }, [])
+    const baseUrl = "http://localhost:52379"
     return (
         <>
-            <div id="navbar-product">
-                <div class="container-product ">
+                <div id="navbar-product">
+            {listProductPet.map(item =>
+                    <div class="container-product ">
                     <div class="product-img">
-                        <img src="" alt="" />
+                        <a href=''>
+                            <img src={baseUrl + item.images} alt='' />
+                        </a>
                     </div>
                     <div class="product-content">
                         <div class="product-header">
-                            <p></p>
+                            <p>{item.maSanPham }-{item.tenSanPham}</p>
                         </div>
                         <div class="product-title">
-                            <p>Product</p>
-                            <p></p>
+                            <p>Genne:{item.gendeer}</p>
+                            <p>Age:{item.size} months </p>
                         </div>
                         <div class="product-price">
-                            <p> VND </p>
+                            <p>{item.price} VND </p>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
+         </div >
         </>
     )
 }

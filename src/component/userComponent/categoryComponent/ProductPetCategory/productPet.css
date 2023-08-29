@@ -1,0 +1,57 @@
+.navbar-product-by{
+    width: 100%;
+    display: flex;
+    column-gap: 36px;
+    row-gap: 18px;
+
+}
+.waper-product-category{
+    width: 100%;
+    display: flex;
+    column-gap: 36px;
+    row-gap: 18px;
+    flex-wrap: wrap;
+}
+.waper-product-category{
+    width: 100%;
+    display: flex;
+    column-gap: 36px;
+    row-gap: 18px;
+    flex-wrap: wrap;
+
+}
+.product-img-category img{
+    display: flex;
+    justify-content: center;
+    padding: 15px 15px !important;
+    margin:auto;
+}
+.product-content-category{
+    padding: 4px 0 20px 18px;
+}
+.product-header-category{
+    font-family: 'SVN-Gilroy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #00171F;
+}
+.product-title-category{
+    display: flex;
+    column-gap: 26px;
+    font-family: 'SVN-Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #667479;
+}
+.product-price-category{
+    font-family: 'SVN-Gilroy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #00171F;
+}

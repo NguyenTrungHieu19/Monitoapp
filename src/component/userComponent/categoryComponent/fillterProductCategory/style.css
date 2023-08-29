@@ -1,0 +1,7 @@
+.navbar-product-filter{
+    width: 30%;
+}
+.navbar-checkBox{
+    display: flex;
+    flex-direction: column;
+}

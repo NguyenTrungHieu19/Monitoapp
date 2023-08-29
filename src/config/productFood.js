@@ -1,5 +1,4 @@
 import { Button } from 'antd';
-const KichHoat = true;
 export const columnsProductFood = [
 
     {
@@ -18,10 +17,6 @@ export const columnsProductFood = [
         title: 'Images',
         dataIndex: 'images',
     },
-    // {
-    //     title: 'Discriptions',
-    //     dataIndex: 'moTa',
-    // },
     {
         title: 'Weight',
         dataIndex: 'size',
@@ -29,12 +24,8 @@ export const columnsProductFood = [
     {
         title: 'Status',
         dataIndex: 'status',
-        render:(record) =>{
-            return(
-            <>
-               {KichHoat ? <Button type="primary">Kích hoạt</Button>:<Button type="primary" danger>khóa</Button>} 
-            </>
-            )
-        }
+        render: status=>(
+            <span>{status?(<Button type="primary">activated</Button>):(<Button type="primary" danger>lock up</Button>) }</span>
+          )        
     },
 ]

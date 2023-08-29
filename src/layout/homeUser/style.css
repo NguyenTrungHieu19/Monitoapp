@@ -1,3 +1,76 @@
+.header {
+    width: 100%;
+    height: 695px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0px 0px 40px 40px;
+    background-position: no-repeat;   
+}
+
+.header_content{
+    width: 50%;
+    margin: 80px 0 0 130px;
+}
+.header-content-text h1{
+    color: var(--header-title);
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 68px;
+    padding-bottom: 4px;
+}
+.header-content-text h2{
+    color: var(--header-title);
+    font-family:'SVN-Gilroy';
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 60px;
+    padding-bottom: 24px;
+    margin:5px 0 !important;
+}
+.header-content-text{
+    width:480px;
+    font-family:'SVN-Gilroy';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--header-text);
+    padding-bottom: 34px;
+}
+.header-content-action{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+.btn--viewtro{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 28px 10px;
+    gap: 8px;
+    border: none;
+    background: none;
+    border: 1.5px solid #003459;
+    border-radius: 57px;
+    font-family:'SVN-Gilroy';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--content-text-color);
+    cursor: pointer;
+}
+.btn--explor{
+    font-family:'SVN-Gilroy';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--input-color);
+    padding: 14px 35.5px 10px 35.5px;
+    background: #003459;
+    border-radius: 57px;
+    border: none;
+    cursor: pointer;
+}
 .container_header p{ 
     font-family:'SVN-Gilroy';
     font-weight: 500;
@@ -17,4 +90,122 @@
     align-items: center;
     justify-content: space-between;
     margin: 2px 130px 26px 130px;
+}
+.container-banner{
+   display: flex;
+   justify-content: center;
+   margin-top: 60px;
+} 
+.content_banner{
+    position: absolute;
+    padding-top: 64px;
+    text-align: right;
+    right: 215px; 
+    z-index: -1;
+}
+.header-content-text h1{
+    color: var(--header-title);
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 68px;
+    padding-bottom: 4px;
+}
+.header-content-text h2{
+    color: var(--header-title);
+    font-family:'SVN-Gilroy';
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 60px;
+    padding-bottom: 24px;
+}
+.header-content-text{
+    width:480px;
+    font-family:'SVN-Gilroy';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--header-text);
+    padding-bottom: 34px;
+}
+.container-banner img{
+    width: 100%;
+    margin: 0 130px;
+    position: relative;
+    z-index: -1;
+    width: 83%;
+    margin: 0 130px;
+} 
+.banner-text h1{
+    font-size: 52px;
+    font-family: SVN-Gilroy;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 68px;
+    text-transform: capitalize;
+    margin: 5px;
+}
+.banner-text h2{
+    font-size: 36px;
+    font-family: SVN-Gilroy;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px;
+    text-transform: capitalize;
+    padding: 0;
+}
+.banner-text p{
+    font-size: 12px;  
+    font-family: SVN-Gilroy;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+.content_bannerFooter{
+    position: absolute;
+    padding-top: 64px;
+    text-align: left;
+    left: 215px;
+    z-index: -1;
+}
+.banner_action{
+    display: flex;
+    justify-content: end;
+}
+.banner-action-footer{
+    display: flex;
+    justify-content: start !important;
+}
+.container_child{
+    margin: 0px !important; 
+}
+.container-child-footer{
+    margin-top: 60px;
+}
+.container-header-text h3{
+    color: var(--content-text-color);
+    font-family:'SVN-Gilroy';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+.container-header-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px 130px 26px 130px;
+}
+.content-text{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;   
+}
+.container{
+    margin-top: 100px !important;
+}
+.content_bannerFooter{
+    position: absolute;
+    padding-top: 64px;
+    text-align: left;
+    left: 215px;
+    z-index: -1;
 }

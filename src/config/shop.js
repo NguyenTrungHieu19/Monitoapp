@@ -1,8 +1,5 @@
 import { Button } from 'antd';
 
-const activated = false;
-
-
 export const columnShop = [
     {
         title: 'Name',
@@ -39,13 +36,8 @@ export const columnShop = [
     {
         title: 'Status',
         dataIndex: 'status',
-        render:(record) =>{
-            return(
-            <>
-               { activated? <Button type="primary">activated</Button>:<Button type="primary" danger>lock up</Button>} 
-            </>
-            )
-        }
-       
+        render: status=>(
+            <span>{status?(<Button type="primary">activated</Button>):(<Button type="primary" danger>lock up</Button>) }</span>
+          )        
     },
 ]

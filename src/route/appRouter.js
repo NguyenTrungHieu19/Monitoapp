@@ -6,6 +6,7 @@ import ProductFood from "../page/productFood"
 import BannerFooter from "../page/bannerFooter"
 import AdminComponent from "../context/AdminComponent"
 import HomeUser from "../layout/homeUser"
+import CategoryUser from "../layout/categoryUser"
 const appRoutes = createBrowserRouter
     ([  
          {          
@@ -35,8 +36,17 @@ const appRoutes = createBrowserRouter
         },
         {
             path :"/",
-            element:<HomeUser/>
+            element:<HomeUser/>,           
+        },
+        {
+            path :"/main/home",
+            element:<HomeUser/>,           
+        },
+        {
+            path:"/main/category",
+            element:<CategoryUser/>
         }
+        
 
         
     ])

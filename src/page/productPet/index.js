@@ -11,96 +11,91 @@ import { ExclamationCircleFilled } from '@ant-design/icons';
 import ProductPetModalContext from '../../context/productPetModalContext';
 import ModalCreateProductPet from '../../component/adminComponent/modalProuctPet/create';
 import ModalUpdateProductPet from '../../component/adminComponent/modalProuctPet/Update';
+import ModalDeleteProductPet from '../../component/adminComponent/modalProuctPet/deleteProductPet';
 const colum = columnsProductPet
 const { Search } = Input;
-const onSearch = (value) => console.log(value);
-const { confirm } = Modal;
-const showDeleteConfirm = () => {
-    confirm({
-      title: 'Are you sure delete this task?',
-      icon: <ExclamationCircleFilled />,
-      content: 'Some descriptions',
-      okText: 'Yes',
-      okType: 'danger',
-      cancelText: 'No',
-      onOk() {
-        console.log('OK');
-      },
-      onCancel() {
-        console.log('Cancel');
-      },
-    });
-  };
 const ProductPet = (props) => {
     const [listProductPet, setListProductPet] = useState([]);
     const [isDisabled, setDisabled] = useState(true);
-    const [pageIndexs, setPageIndex] = useState();
-    const [pageSize, setPageSize] = useState(8);
-    const [totalRows, setTotalRow] = useState(8)
-    const fetchListShop = async (search,sortBy,page,pageSize) => {
+    const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+    const [selectedRows, setSelectedRows] = useState({});
+    const [openModalCreateProductPet,setOpenModalCreateProductPet] = useState(false);
+    const [openModalUpProductPet,setOpenModalUpProductPet] = useState(false);
+    const [openModalDeleteProductPet, setOpenModalDeleteProductPet] = useState(false);
+    const [pageIndexs, setPageIndex] = useState(1);
+    const [totalRows, setTotalRow] = useState(0);
+    const [listSearch, setListSearch] = useState({});
+    const pageSizes = 8;
+    const handelSearch = () =>{ 
+            fetchListProductPet();
+    }
+    const valueSearch = (value)=>{
+        setListSearch(value)
+    }
+    const fetchListProductPet = async () => {
         try {
-            const response = await ProductPetApis.GetAllFillter(search,sortBy=8,page,pageSize);
+            const response = await ProductPetApis.GetAllFillter(listSearch,null,null,pageIndexs,pageSizes);
             setListProductPet(response.data.items.map(row => (
                 { key: row.id, maSanPham: row.maSanPham, tenSanPham: row.tenSanPham, price: row.price,
-                     disCountPrice: row.disCountPrice, images: row.images, moTa: row.moTa, size: row.size,
-                      gendeer: row.gendeer,status: row.status }   
-                 
+                  disCountPrice: row.disCountPrice, images: row.images, moTa: row.moTa, size: row.size,
+                  gendeer: row.gendeer,status: row.status }                  
             )))
-            setPageIndex(response.data.pageIndex +1)
-            setTotalRow(response.data.totalRow)  
-            setPageSize(8)
+            setTotalRow(response.data.totalRow)   
+            console.log(response.data.totalRow)    
+     
         } catch (err) {
 
         }
     };
     useEffect(() => {
-        fetchListShop();
-    }, [])
-    const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-    const onSelectChange = (newSelectedRowKeys) => {
-        console.log('selectedRowKeys changed: ', newSelectedRowKeys);
-        setSelectedRowKeys(newSelectedRowKeys);
-    };
+          fetchListProductPet(); 
+    },[pageIndexs])
+
     const rowSelection = {
-        selectedRowKeys,
-        fixed: "left",
-        onChange: onSelectChange,
-        selections: [
-            Table.SELECTION_ALL,
-            Table.SELECTION_INVERT,
-            Table.SELECTION_NONE,
-        ],
-    };
+        onChange: (selectedRowKeys, selectedRows) => {
+          setSelectedRowKeys(selectedRowKeys)
+          setSelectedRows(selectedRows)
+      
+        }};
+
     useEffect(() => {
         setDisabled(!!!selectedRowKeys?.length)
       }, [selectedRowKeys]);
-    const [openModalCreateProductPet,setOpenModalCreateProductPet] = useState(false)
-    const [openModalUpProductPet,setOpenModalUpProductPet] = useState(false)
+
     const handleAdd = ()=>{
         setOpenModalCreateProductPet(true);
     }
     const handleUpdate =()=>{
         setOpenModalUpProductPet(true);
-    }
-    
+    }  
+    const handleDelete=()=>{
+        setOpenModalDeleteProductPet(true);
+    }  
     const paginations = {
         total:totalRows,
         current:pageIndexs,
-        onChange: (page, pageSize) => {setPageIndex(page); setPageSize(pageSize)}
+        onChange: (page) => {setPageIndex(page)}  
     }
     return (
-        <ProductPetModalContext.Provider value={{openModalCreateProductPet,setOpenModalCreateProductPet,openModalUpProductPet,setOpenModalUpProductPet}}>
+        <ProductPetModalContext.Provider value={{openModalCreateProductPet,setOpenModalCreateProductPet,
+                                                openModalUpProductPet,setOpenModalUpProductPet,
+                                                openModalDeleteProductPet,setOpenModalDeleteProductPet,
+                                                fetchListProductPet,selectedRowKeys,selectedRows}}>
           <ModalCreateProductPet/>
           <ModalUpdateProductPet/>
+          <ModalDeleteProductPet/>
             <div className={styles.headerContent}>
+                <div>
+                    <h1>Product Pet</h1>
+                </div>
                 <div className={styles.headerleft}>
-                    <Search placeholder="input search text" onSearch={onSearch} enterButton />
+                    <Search placeholder="input search product pet" onChange={e => valueSearch(e.target.value)} onSearch={handelSearch} allowClear enterButton="Search" />
                 </div>
                 <div className={styles.headerButton}>
                     <Button disabled={isDisabled} type="primary" className={styles.buttonEdit} onClick={handleUpdate} >
                         <BorderColorIcon />
                     </Button>
-                    <Button  disabled={isDisabled} type="primary" danger onClick={showDeleteConfirm}>
+                    <Button  disabled={isDisabled} type="primary" danger onClick={handleDelete}>
                         <DeleteIcon />
                     </Button>
                     <Button type="primary" onClick={handleAdd} >

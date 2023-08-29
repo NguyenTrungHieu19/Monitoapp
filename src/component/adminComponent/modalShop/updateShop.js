@@ -47,27 +47,24 @@ const validationSchema = yup.object({
 });
 
 const ModalUpdateShop = () => {
-    const { openUpdateShop, setOpenUpdateShop ,fetchListShop,selectedRows,selectedRowKeys } = useContext(ShopModalContext);
+    const { openUpdateShop, setOpenUpdateShop ,fetchListShop,selectedRows } = useContext(ShopModalContext);
     const [open, setOpen] = useState(false);
     const handleClose = () => {
         setOpenUpdateShop(false);  
     };
-    const handleCloseLoading = ()=>{
+    const handleCloseLoading = () => {
         setOpen(true)
-        setOpenUpdateShop(false);
-        setTimeout  ( async () => {
-            //  handleUpdateShop();
-            //  fetchListShop();
-             await setOpen(false);
+        setOpenUpdateShop(false)
+        setTimeout(async () => {
+            fetchListShop();
+           await setOpen(false);
         }, 2000);
-       
     }
-  
     const formik = useFormik({
         enableReinitialize:true,
         initialValues: 
            {
-            id:selectedRows[0]?.id?? "",
+            id:selectedRows[0]?.key?? "",
             name:selectedRows[0]?.name?? "",
             address:selectedRows[0]?.address?? "",
             phone:selectedRows[0]?.phone?? "",
@@ -81,9 +78,8 @@ const ModalUpdateShop = () => {
         
         validationSchema: validationSchema,
         onSubmit: async (values) => {
-            console.log(values)
             await handleUpdateShop({
-                id: values.key,
+                id: values.id,
                 addres: values.address,
                 name: values.name,
                 phone: values.phone,
@@ -93,16 +89,14 @@ const ModalUpdateShop = () => {
                 zalo: values.zalo,
                 logo: values.logo,
                 status: values.status,
-            });
-            await fetchListShop();
-            
+            });  
+            formik.resetForm();         
         },
     });
-
-    const handleUpdateShop = async ({address, name, phone, hotline, facebook, email, zalo, logo, status }) =>
+    const handleUpdateShop = async ( { id,address, name, phone, hotline, facebook, email, zalo, logo, status }) =>
     {
         try{
-            await ShopApi.Update(selectedRowKeys,{ address, name, phone, hotline, facebook, email, zalo, logo, status });       
+            await ShopApi.Update(id,{id,address, name, phone, hotline, facebook, email, zalo, logo, status });       
         }
         catch(error){
             console.log(error)
@@ -236,7 +230,7 @@ const ModalUpdateShop = () => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button  variant="contained" type="submit">Save</Button>
+                        <Button onClick={handleCloseLoading} variant="contained" type="submit">Save</Button>
                     </DialogActions>
                 </form>
             </Dialog>

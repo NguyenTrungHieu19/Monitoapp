@@ -2,11 +2,12 @@ import AxiosClient from "./api";
 const GetAll = (config) =>{
     return AxiosClient.get("/product/getall?top=8", config)
 }
-const GetAllFillter = (search,sortBy,page,pageSize) =>{
+const GetAllFillter = (search,sortBy,gender,page,pageSize) =>{
     return AxiosClient.get(`/product/getfillter?`, {
       params:{
         search,
         sortBy,
+        gender,
         page,
         pageSize,
         
@@ -16,6 +17,7 @@ const GetAllFillter = (search,sortBy,page,pageSize) =>{
 const GetById = (id, config)=>{
     return AxiosClient.get(`/product/${id}`, config)
 }
+
 const Create = (data, config) => {
     return AxiosClient.post("/product", data, config);
   };
