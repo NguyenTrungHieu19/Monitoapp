@@ -11,6 +11,8 @@ import styles from './index.module.scss'
 import ModalCreateShop from '../../component/adminComponent/modalShop/createShop';
 import ModalUpdateShop from '../../component/adminComponent/modalShop/updateShop';
 import ModalDeleteShop from '../../component/adminComponent/modalShop/deleteShop';
+import MessgeErorr from '../../component/ToastMessge/MessgeErorr/Erorr';
+import MessgeSucsse from '../../component/ToastMessge/MessgeSucsse/Sucsse';
 const column = columnShop;
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
@@ -65,6 +67,8 @@ const ShopTable = (props) => {
      <ModalCreateShop/>
      <ModalUpdateShop/>
      <ModalDeleteShop/>
+     <MessgeSucsse/>
+     <MessgeErorr/>
       <div className={styles.headerContent}>
         <div className={styles.headerleft}>
           <Search placeholder="input search text" onSearch={onSearch} enterButton />

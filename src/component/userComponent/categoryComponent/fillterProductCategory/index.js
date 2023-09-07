@@ -1,10 +1,16 @@
 import { Checkbox } from 'antd';
 import '../fillterProductCategory/style.css'
 import { useState } from 'react';
+import { store } from '../../../../store';
 
 
 const FillterProductCategory =()=>{
-    const [checkGender,setCheckGender] = useState({});
+    const [checkGender,setCheckGender] = useState(store.getState().fillterProduct);
+    console.log(checkGender)
+    const WatchStore = () => {
+      store.subscribe(() => setCheckGender(store.getState().fillterProduct))
+    };
+    WatchStore();
     const handleCheckGender =(values)=>{
          setCheckGender(values);
          // fetchProductPet();

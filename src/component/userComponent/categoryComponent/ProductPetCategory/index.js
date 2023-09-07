@@ -21,7 +21,7 @@ const ProductPetCategory = () => {
     };
 
 
-    useEffect(() => {
+    useEffect(() => {  
         fetchProductPet()
     }, [pageIndexs]);
     const handleOnchangePage = (page) => setPageIndex(page);
@@ -32,7 +32,10 @@ const ProductPetCategory = () => {
       
             <div class="navbar-product-by">
                 <div class="waper-product-category">           
-                    {listProductPet.map(item =>
+                    {listProductPet.map((item) =>{
+                       if(item.status){
+
+                      return(
                         <div class="container-product-category " key={item.id} >
                             <div class="product-img-category">
 
@@ -50,11 +53,13 @@ const ProductPetCategory = () => {
                                     <p>Age:{item.size} months </p>
                                 </div>
                                 <div class="product-price-category">
-                                    <p>{item.price}VND </p>
+                                    <p>{item.price} VND </p>
                                 </div>
                             </div>
                         </div>
-                    )}
+                        )};
+                    return null;
+                })};
                  
                     <div class="product-paging">
                         <Pagination

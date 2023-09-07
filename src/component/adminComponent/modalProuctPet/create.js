@@ -7,6 +7,8 @@ import { message, Upload } from 'antd';
 import { Button, Backdrop, Checkbox, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, TextField } from "@mui/material";
 import styles from "../modalProuctPet/index.module.scss";
 import ProductPetApis from "../../../api/productPetApi";
+import { store } from "../../../store";
+import { ShowMessgeErorr, ShowMessgeSucsse } from "../../../store/action/NoticationMessge";
 
 const validationSchema = yup.object({
     maSanPham: yup
@@ -37,7 +39,7 @@ const props = {
     },
     onChange(info) {
         if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
+            // console.log(info.file, info.fileList);
         }
         if (info.file.status === 'done') {
             message.success(`${info.file.name} file uploaded successfully`);
@@ -46,15 +48,24 @@ const props = {
         }
     },
 };
+const handelMessge = () => {
+    store.dispatch(ShowMessgeSucsse(" You have successfully created a new one!"))
+}
+const handelErorr =()=>{
+    store.dispatch(ShowMessgeErorr())
+}
 const ModalCreateProductPet = () => {
     const { openModalCreateProductPet, setOpenModalCreateProductPet,fetchListProductPet } = useContext(ProductPetModalContext);
     const [open, setOpen] = useState(false);
     const handleCreateProductPet = async ({maSanPham,tenSanPham,price,disCountPrice,images,moTa,size,gendeer,status}) => {
         try {
-             await ProductPetApis.Create({maSanPham,tenSanPham,price,disCountPrice,images,moTa,size,gendeer,status});
+            await ProductPetApis.Create({maSanPham,tenSanPham,price,disCountPrice,images,moTa,size,gendeer,status});
+             handelMessge();
         }
-        catch (err) {
-
+        catch (erorr) {
+            if(erorr.response && erorr.response.status === 400){
+               handelErorr();
+            }
         }
     }
     const handleClose = () => {
@@ -63,8 +74,8 @@ const ModalCreateProductPet = () => {
     const handleCloseLoading = () => {
         setOpen(true)
         setOpenModalCreateProductPet(false);
-        fetchListProductPet();
         setTimeout(async () => {
+            fetchListProductPet();
             await setOpen(false);
         }, 2000);
 
@@ -79,7 +90,7 @@ const ModalCreateProductPet = () => {
             moTa:"",
             size:"",
             gendeer:"",
-            status:false
+            status:false,
      
         },
         validationSchema: validationSchema,
@@ -94,8 +105,9 @@ const ModalCreateProductPet = () => {
                 size:values.size,
                 gendeer:values.gendeer,
                 status:values.status
-                }
-            )
+                })
+                handleCloseLoading();
+                formik.resetForm();
         },
     });
 
@@ -226,7 +238,7 @@ const ModalCreateProductPet = () => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleCloseLoading} variant="contained" type="submit">Save</Button>
+                        <Button  variant="contained" type="submit">Save</Button>
                     </DialogActions>
                 </form>
             </Dialog>

@@ -1,4 +1,5 @@
 import { Button } from 'antd';
+const baseUrl = "http://localhost:52379"
 export const columnsProductPet = [
     {
         title: 'ProductCode',
@@ -19,6 +20,7 @@ export const columnsProductPet = [
     {
         title: 'Images',
         dataIndex: 'images',
+        render:(images)=><img src={baseUrl +images} alt="" width="100px" height="100px"/>
     },
     {
         title: 'Discriptions',

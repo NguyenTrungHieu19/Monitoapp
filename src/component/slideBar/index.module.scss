@@ -28,3 +28,13 @@
 .css-1191obr-MuiPaper-root-MuiAppBar-root{
     background-color: antiquewhite !important;
 }
+.menuItem{
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+:global{
+    .ant-dropdown-menu-item-active:hover{
+        background-color: none !important;
+    }
+}

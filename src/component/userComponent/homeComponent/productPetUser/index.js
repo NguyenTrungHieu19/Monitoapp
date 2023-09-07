@@ -14,12 +14,13 @@ const ProductPetUser = () => {
     return (
         <>
                 <div id="navbar-product">
-            {listProductPet.map(item =>
+            {listProductPet.map((item)=>{
+                if(item.status){
+
+               return(
                     <div class="container-product ">
-                    <div class="product-img">
-                        <a href=''>
+                    <div class="product-img">                     
                             <img src={baseUrl + item.images} alt='' />
-                        </a>
                     </div>
                     <div class="product-content">
                         <div class="product-header">
@@ -33,8 +34,9 @@ const ProductPetUser = () => {
                             <p>{item.price} VND </p>
                         </div>
                     </div>
-                </div>
-            )}
+                </div>)};
+                return null;
+            })}
          </div >
         </>
     )

@@ -33,7 +33,7 @@ const props = {
     },
     onChange(info) {
         if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
+            // console.log(info.file, info.fileList);
         }
         if (info.file.status === 'done') {
             message.success(`${info.file.name} file uploaded successfully`);
@@ -58,10 +58,10 @@ const ModalCreateProductFood = () => {
         },
     });
     const onChange = (value) => {
-        console.log('changed', value);
+        
     };
     const handleChange = (value) => {
-        console.log(`selected ${value}`);
+        
     };
     return (
         <>

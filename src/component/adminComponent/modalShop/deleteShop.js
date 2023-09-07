@@ -2,6 +2,8 @@ import { Modal } from 'antd';
 import { useContext, useState } from 'react';
 import ShopModalContext from "../../../context/shopModaleContext";
 import ShopApi from "../../../api/shopApi";
+import { store } from '../../../store';
+import { ShowMessgeSucsse } from '../../../store/action/NoticationMessge';
 const ModalDeleteShop = () => {
     const { openDeleteShop, setOpenDeleteShop, selectedRowKeys, fetchListShop } = useContext(ShopModalContext);
     const [confirmLoading, setConfirmLoading] = useState(false);
@@ -15,10 +17,14 @@ const ModalDeleteShop = () => {
             setOpenDeleteShop(false);
             setConfirmLoading(false);
             await fetchListShop();
+            handelMessge();
         }, 2000);
     };
     const ShopDelete = async () => {
         await ShopApi.Delete(selectedRowKeys)
+    }
+    const handelMessge = () => {
+        store.dispatch(ShowMessgeSucsse(" You have successfully created a new one!"))
     }
     return (
         <>

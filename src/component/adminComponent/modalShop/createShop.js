@@ -14,6 +14,8 @@ import ShopApi from "../../../api/shopApi";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import ShopModalContext from "../../../context/shopModaleContext";
+import { store } from "../../../store";
+import { ShowMessgeErorr, ShowMessgeSucsse } from "../../../store/action/NoticationMessge";
 
 const props = {
     name: 'file',
@@ -23,7 +25,7 @@ const props = {
     },
     onChange(info) {
         if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
+            // console.log(info.file, info.fileList);
         }
         if (info.file.status === 'done') {
             message.success(`${info.file.name} file uploaded successfully`);
@@ -55,12 +57,19 @@ const ModalCreateShop = () => {
     const handleClose = () => {
         setOpenCreateShop(false);
     };
+    const handelMessge = () => {
+        store.dispatch(ShowMessgeSucsse(" You have successfully created a new one!"))
+    }
+    const handelErorr =()=>{
+        store.dispatch(ShowMessgeErorr())
+    }
     const handleCloseLoading = () => {
         setOpen(true)
         setOpenCreateShop(false);
         setTimeout(async () => {
             fetchListShop();
             await setOpen(false);
+            // handelMessge();
         }, 2000);
 
     }
@@ -89,6 +98,8 @@ const ModalCreateShop = () => {
                 logo: values.logo,
                 status: values.status,
             });
+         
+            handleCloseLoading();
             formik.resetForm();
         },
     });
@@ -97,9 +108,12 @@ const ModalCreateShop = () => {
         try {
 
             await ShopApi.Create({ address, name, phone, hotline, faceBook, email, zalo, logo, status });
+            handelMessge();
         }
         catch (error) {
-          
+            if(error.reponse && error.reponse.status === 400){
+                handelErorr();
+            }
         }
     }
     return (
@@ -218,8 +232,8 @@ const ModalCreateShop = () => {
 
                             <div>
                                 <p>Status</p>
-                                <FormControlLabel                               
-                                    control={<Checkbox checked={formik.values.status}/>}
+                                <FormControlLabel
+                                    control={<Checkbox checked={formik.values.status} />}
                                     label="activated"
                                     name="status"
                                     onChange={formik.handleChange}
@@ -230,7 +244,7 @@ const ModalCreateShop = () => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleCloseLoading}variant="contained" type="submit">Save</Button>
+                        <Button variant="contained" type="submit">Save</Button>
                     </DialogActions>
                 </form>
             </Dialog>

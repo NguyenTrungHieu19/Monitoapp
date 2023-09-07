@@ -3,15 +3,17 @@ import { useState, useEffect } from 'react';
 import ProductPetApis from '../../api/productPetApi';
 import { columnsProductPet } from '../../config/productPet';
 import styles from './index.module.scss'
-import { Button, Modal,Input,Table  } from 'antd';
+import { Button,Input,Table  } from 'antd';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { ExclamationCircleFilled } from '@ant-design/icons';
 import ProductPetModalContext from '../../context/productPetModalContext';
 import ModalCreateProductPet from '../../component/adminComponent/modalProuctPet/create';
 import ModalUpdateProductPet from '../../component/adminComponent/modalProuctPet/Update';
 import ModalDeleteProductPet from '../../component/adminComponent/modalProuctPet/deleteProductPet';
+import CreateMessge from '../../component/ToastMessge/MessgeSucsse/Sucsse';
+import MessgeErorr from '../../component/ToastMessge/MessgeErorr/Erorr';
+import MessgeSucsse from '../../component/ToastMessge/MessgeSucsse/Sucsse';
 const colum = columnsProductPet
 const { Search } = Input;
 const ProductPet = (props) => {
@@ -84,6 +86,8 @@ const ProductPet = (props) => {
           <ModalCreateProductPet/>
           <ModalUpdateProductPet/>
           <ModalDeleteProductPet/>
+          <MessgeSucsse/>
+          <MessgeErorr/>
             <div className={styles.headerContent}>
                 <div>
                     <h1>Product Pet</h1>
@@ -95,7 +99,7 @@ const ProductPet = (props) => {
                     <Button disabled={isDisabled} type="primary" className={styles.buttonEdit} onClick={handleUpdate} >
                         <BorderColorIcon />
                     </Button>
-                    <Button  disabled={isDisabled} type="primary" danger onClick={handleDelete}>
+                    <Button disabled={isDisabled} type="primary" danger onClick={handleDelete}>
                         <DeleteIcon />
                     </Button>
                     <Button type="primary" onClick={handleAdd} >

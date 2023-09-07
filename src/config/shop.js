@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-
+const baseUrl = "http://localhost:52379"
 export const columnShop = [
     {
         title: 'Name',
@@ -32,6 +32,7 @@ export const columnShop = [
     {
         title: 'Logo',
         dataIndex: 'logo',
+        render:(logo)=><img src={baseUrl + logo} alt=''width="150px" height="50px" />
     },
     {
         title: 'Status',

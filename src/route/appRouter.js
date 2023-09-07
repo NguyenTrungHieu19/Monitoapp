@@ -7,48 +7,55 @@ import BannerFooter from "../page/bannerFooter"
 import AdminComponent from "../context/AdminComponent"
 import HomeUser from "../layout/homeUser"
 import CategoryUser from "../layout/categoryUser"
+import Login from "../page/login/login"
+
 const appRoutes = createBrowserRouter
-    ([  
-         {          
-            path: "/admin",          
-            children:[
+    ([
+        {
+            path: "/login",
+            element: <Login />
+        },
+        {
+            path: "/admin",
+            children: [
+
                 {
                     path: "",
-                    element: <AdminComponent component={MenusTable}/>,
+                    element: <AdminComponent component={MenusTable} />,
                 },
                 {
                     path: "shop",
-                    element:<AdminComponent component={ShopTable}/>,
+                    element: <AdminComponent component={ShopTable} />,
                 },
                 {
                     path: "productpet",
-                    element:<AdminComponent component={ProductPet}/>,
+                    element: <AdminComponent component={ProductPet} />,
                 },
                 {
                     path: "productfood",
-                    element:<AdminComponent component={ProductFood}/>,
+                    element: <AdminComponent component={ProductFood} />,
                 },
                 {
                     path: "bannerfooter",
-                    element:<BannerFooter/>,
+                    element: <BannerFooter />,
                 },
             ],
         },
         {
-            path :"/",
-            element:<HomeUser/>,           
+            path: "/",
+            element: <HomeUser />,
         },
         {
-            path :"/main/home",
-            element:<HomeUser/>,           
+            path: "/main/home",
+            element: <HomeUser />,
         },
         {
-            path:"/main/category",
-            element:<CategoryUser/>
+            path: "/main/category",
+            element: <CategoryUser />
         }
-        
 
-        
+
+
     ])
 
-    export default appRoutes;
+export default appRoutes;

@@ -19,7 +19,7 @@
     right: 215px; 
     z-index: -1;
 }
-.header-content-text h1{
+.header-content-text-category h1{
     color:  #FDFDFD;
     font-weight: 800;
     font-size: 60px;
@@ -27,7 +27,7 @@
     padding-bottom: 4px;
     margin: 5px;
 }
-.header-content-text h2{
+.header-content-text-category h2{
     color:  #FDFDFD;
     font-family:'SVN-Gilroy';
     font-weight: 700;
@@ -36,7 +36,7 @@
     /* padding-bottom: 24px; */
     padding: 0;
 }
-.header-content-text{
+.header-content-text-category{
     width:480px;
     font-family:'SVN-Gilroy';
     font-weight: 500;
@@ -68,7 +68,7 @@
     font-weight: 500;
     line-height: 18px;
 }
-.btn--viewtro{
+.btn--viewtro--category{
     display: flex;
     flex-direction: row;
     justify-content: center;

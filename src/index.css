@@ -10,3 +10,6 @@
 .buttonEdit{
   background-color: rgb(236, 151, 4);
 }
+body{
+  margin: 0!important;
+}

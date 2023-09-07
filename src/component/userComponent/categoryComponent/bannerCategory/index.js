@@ -23,13 +23,13 @@ const BannerCategory = () => {
             <div class="container-banner"key={item.id} >
                 <img src={baseUrl + item.images} alt={baseUrl + item.images} />
                 <div class="content_banner">
-                    <div class="header-content-text banner-text">
+                    <div class="header-content-text-category banner-text">
                         <h1>{item.headerH1}</h1>
                         <h2>{item.headerH2}</h2>
                         <p> {item.content}</p>
                     </div>
                     <div class="header-content-action banner_action">
-                        <button class="btn--viewtro btn-banner">
+                        <button class="btn--viewtro--category btn-banner">
                             View Intro
                             <i class="fa-regular fa-circle-play"></i>
                         </button>

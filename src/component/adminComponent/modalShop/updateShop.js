@@ -12,6 +12,8 @@ import ShopModalContext from "../../../context/shopModaleContext";
 import styles from "./index.module.scss"
 import { Backdrop, Checkbox, CircularProgress, FormControlLabel, TextField } from "@mui/material";
 import ShopApi from "../../../api/shopApi";
+import { store } from "../../../store";
+import { ShowMessgeSucsse } from "../../../store/action/NoticationMessge";
 const props = {
     name: 'file',
     action: '',
@@ -29,6 +31,9 @@ const props = {
         }
     },
 };
+const handelMessge = () => {
+    store.dispatch(ShowMessgeSucsse(" You have successfully created a new one!"))
+}
 const validationSchema = yup.object({
     address: yup
         .string('Enter shop addres')
@@ -58,6 +63,7 @@ const ModalUpdateShop = () => {
         setTimeout(async () => {
             fetchListShop();
            await setOpen(false);
+           handelMessge();
         }, 2000);
     }
     const formik = useFormik({
@@ -90,6 +96,7 @@ const ModalUpdateShop = () => {
                 logo: values.logo,
                 status: values.status,
             });  
+            handleCloseLoading();
             formik.resetForm();         
         },
     });
@@ -230,7 +237,7 @@ const ModalUpdateShop = () => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleCloseLoading} variant="contained" type="submit">Save</Button>
+                        <Button  variant="contained" type="submit">Save</Button>
                     </DialogActions>
                 </form>
             </Dialog>
